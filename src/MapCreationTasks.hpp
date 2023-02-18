@@ -50,11 +50,60 @@ Botcraft::Status CheckCompletion(Botcraft::BehaviourClient& c);
 /// @return Always return success
 Botcraft::Status WarnConsole(Botcraft::BehaviourClient& c, const std::string& msg);
 
-/// @brief Loads a NBT file (unzipped) and store the target structure in the blackboard of the given client
+/// @brief Loads a Structure NBT file (unzipped) and store the target structure in the blackboard of the given client
 /// @param c The client performing the action
 /// @param path The path to the unzipped NBT file
 /// @param offset Starting offset position to build the structure
 /// @param temp_block Minecraft item/block name used as scafholding block in the NBT
 /// @param log_info Whether or not the loading information should be logged
 /// @return Success if the file was correctly loaded, failure otherwise
-Botcraft::Status LoadNBT(Botcraft::BehaviourClient& c, const std::string& path, const Botcraft::Position& offset, const std::string& temp_block, const bool log_info);
+Botcraft::Status LoadStructureNBT(Botcraft::BehaviourClient& c, const std::string& path, const Botcraft::Position& offset, const std::string& temp_block, const bool log_info);
+
+/// @brief Loads a Schematic NBT file (unzipped) and store the target structure in the blackboard of the given client
+/// @param c The client performing the action
+/// @param path The path to the unzipped NBT file
+/// @param offset Starting offset position to build the structure
+/// @param temp_block Minecraft item/block name used as scafholding block in the NBT
+/// @param log_info Whether or not the loading information should be logged
+/// @return Success if the file was correctly loaded, failure otherwise
+Botcraft::Status LoadSchematicNBT(Botcraft::BehaviourClient& c, const std::string& path, const Botcraft::Position& offset, const std::string& temp_block, const bool log_info);
+
+/// @brief Loads an image file, computes the target structure and stores it in the blackboard of the given client
+/// @param c The client performing the action
+/// @param path The path to the greyscale image
+/// @param offset Starting offset position to build the structure
+/// @param log_info Whether or not the loading information should be logged
+/// @return Success if the file was correctly loaded, failure otherwise
+Botcraft::Status LoadHeightField(Botcraft::BehaviourClient& c, const std::string& path, const Botcraft::Position& offset, const bool log_info);
+
+/// @brief Enqueue tasks to create/dig a circle
+/// @param c The client performing the action
+/// @param center The center point of the circle
+/// @param radius The radius of the circle
+/// @param thickness The thickness of the circle
+/// @param outwards Bool whether the thickness is inwards or outwards
+/// @param height The height of the circle
+/// @param material The material to use
+/// @param log_info Bool enable logging
+/// @return Success if the tasks were enqueued, Failure otherwise
+Botcraft::Status CreateCircle(Botcraft::BehaviourClient& c, const Botcraft::Position& center, float radius, float thickness, bool outwards, float height, const std::string& material);
+
+/// @brief Enqueue tasks to create/dig a line
+/// @param c The client performing the action
+/// @param start The start point of the line
+/// @param end The end point of the line
+/// @param width The width of the line
+/// @param thickness The thickness of the line
+/// @param upwards Bool whether the thickness is upwards or downwards
+/// @param material The material to use
+/// @return Success if the tasks were enqueued, Failure otherwise
+//Botcraft::Status CreateLine(Botcraft::BehaviourClient& c, const Botcraft::Position& start, const Botcraft::Position& end, float width, float thickness, bool upwards, const std::string& material);
+
+/// @brief Enqueue tasks to cover an area (like with transparent blocks to prevent spawn)
+/// @param c The client performing the action
+/// @param center The center point of the circle
+/// @param radius The radius of the circle
+/// @param material The material to use
+/// @return Success if the tasks were enqueued, Failure otherwise
+// Botcraft::Status CoverCircle(Botcraft::BehaviourClient& c, const Botcraft::Position& center, float radius, const std::string& material);
+
