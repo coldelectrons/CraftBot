@@ -29,8 +29,9 @@ include(FetchContent)
 # --- Fetch BotCraft --------------------------------------------------------------
 set(FETCHCONTENT_UPDATES_DISCONNECTED TRUE)
 FetchContent_Declare(botcraft
-  GIT_REPOSITORY https://github.com/adepierre/Botcraft
-  GIT_TAG latest
+    #GIT_REPOSITORY https://github.com/adepierre/Botcraft
+    GIT_REPOSITORY https://github.com/coldelectrons/BotcraftExperimental
+    #GIT_TAG latest
   GIT_SHALLOW TRUE
 )
 
